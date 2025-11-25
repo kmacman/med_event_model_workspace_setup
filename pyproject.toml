@@ -5,9 +5,21 @@ description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
+    "eventexpressions",
     "ipython>=9.7.0",
     "jupyter>=1.1.1",
+    "meds-etl",
     "numpy>=2.3.5",
     "polars>=1.35.2",
     "regex>=2025.11.3",
 ]
+
+[tool.uv.workspace]
+members = [
+    "EventExpressions",
+    "meds_etl",
+]
+
+[tool.uv.sources]
+eventexpressions = { workspace = true, editable = true }
+meds-etl = { workspace = true, editable = true }
