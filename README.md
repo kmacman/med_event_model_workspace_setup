@@ -1,25 +1,25 @@
 # Med Event Model Workspace Setup
-## Option A: Quick Start (Cloning this Repo)
-## Use this if you want the standard setup immediately.
+# Option A: Quick Start (Cloning this Repo): Use this if you want the standard setup immediately.
+``` bash
 
-### 1. Clone the repo and all submodules in one go
-```
+#1. Clone the repo and all submodules in one go
 git clone --recurse-submodules https://github.com/kmacman/med_event_model_workspace_setup
 cd med_event_model_workspace_setup
+
+# 2. Load UV (Cluster specific)
+module add uv
+
+# 3. Copy the compiled c++ tokenizer file into meds_etl/fastbpe
+
+# FIX: Temporary fix for meds_etl (Main branch missing config)
+# copy the following file into the meds_etl folder (this should be fixed as soon as a pr is merged): https://github.com/ajloza/meds_etl/blob/kmacman-pyproject-toml/pyproject.toml
+
+# 4. Sync the environment - This reads pyproject.toml and installs all dependencies (including submodules)
+uv sync
+
+#5. Activate the environment
+source .venv/bin/activate
 ```
-### 2. Load UV (Cluster specific)
-`module add uv`
-
-### 3. Copy the compiled c++ tokenizer file into meds_etl/fastbpe
-#### _3.5 copy the following file into the meds_etl folder (this should be fixed as soon as a pr is merged): https://github.com/ajloza/meds_etl/blob/kmacman-pyproject-toml/pyproject.toml_
-
-### 4. Sync the environment
-#### This reads pyproject.toml and installs all dependencies (including submodules)
-`uv sync`
-
-### 5. Activate the environment
-`source .venv/bin/activate`
-
 > Note: You must have your git config user.email set up to access the private submodules.
 
 # Option B: Building from Scratch (No Clone)
@@ -46,14 +46,10 @@ uv add polars ipython jupyter regex numpy
 git submodule add https://github.com/ajloza/meds_etl
 git submodule add https://github.com/ajloza/EventExpressions
 
-# Compile C++ backend for meds_etl
-cd meds_etl/fastbpe
-g++ -std=c++11 -pthread -O3 fastBPE/main.cc -IfastBPE -o fast
-cd ../..
+# Copy the compiled C++ file into meds_etl/fastbpe
 
 # FIX: Temporary fix for meds_etl (Main branch missing config)
-# Copy the config from the fix branch so UV can see it
-wget https://raw.githubusercontent.com/ajloza/meds_etl/kmacman-pyproject-toml/pyproject.toml -O meds_etl/pyproject.toml
+# copy the following file into the meds_etl folder (this should be fixed as soon as a pr is merged): https://github.com/ajloza/meds_etl/blob/kmacman-pyproject-toml/pyproject.toml
 ```
 ## 4. Link Libraries to UV
 ### We use --editable so changes in the folder are immediately reflected in your code.
