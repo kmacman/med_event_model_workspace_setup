@@ -1,0 +1,6 @@
+[submodule "meds_etl"]
+	path = meds_etl
+	url = https://github.com/ajloza/meds_etl
+[submodule "EventExpressions"]
+	path = EventExpressions
+	url = https://github.com/ajloza/EventExpressions
