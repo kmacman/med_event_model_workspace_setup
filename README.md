@@ -7,8 +7,11 @@ module add uv
 uv sync
 ```
 
+_You will need access to the private repos and will need config user.email set up appropriately.
+You will also need to compile the c++ fastBPE file in meds_etl/fastbpe still._
 
 
+# If you want to set it up without cloning this repo, do the following:
 ## Make a new folder for your project/workspace and setup an env
 
 `module add uv`
