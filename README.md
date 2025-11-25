@@ -3,6 +3,7 @@
 ``` bash
 git clone --recurse-submodules https://github.com/kmacman/med_event_model_workspace_setup
 cd med_event_model_workspace_setup
+module add uv # needed on the cluster to add UV
 bash setup.sh
 
 #IF there have been any updates to meds_etl or EventExpressions, run the following to update the submodules
