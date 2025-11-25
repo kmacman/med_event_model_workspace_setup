@@ -1,58 +1,90 @@
-# Run the following commands to clone this repo and set up the workspace with the necessary libraries installed as 'submodule' dependencies using UV.
-``` bash
-git clone https://github.com/kmacman/med_event_model_workspace_setup
+# Med Event Model Workspace Setup
+## Option A: Quick Start (Cloning this Repo)
+## Use this if you want the standard setup immediately.
+
+```Bash
+
+# 1. Clone the repo and all submodules in one go
+
+git clone --recurse-submodules https://github.com/kmacman/med_event_model_workspace_setup
 cd med_event_model_workspace_setup
-git submodule update --init --recursive
-module add uv
-uv sync
-uv pip install -e EventExpressions
-uv pip install -e meds_etl
-```
 
-_You will need access to the private repos and will need config user.email set up appropriately.
-You will also need to compile the c++ fastBPE file in meds_etl/fastbpe still._
-
-
-# If you want to set it up without cloning this repo, do the following:
-## Make a new folder for your project/workspace and setup an env
-
+# 2. Load UV (Cluster specific)
 `module add uv`
 
-`uv init` 
+# 3. Compile the tokenizer (REQUIRED)
 
-`uv venv`
-
-## For regular dependencies, just do uv add:
-
-`uv add polars ipython jupyter regex numpy`
-
-## To add our libraries from git, use git submodules:
-
-### (You will need access from Andrew and will need to set your git config user.email in order to clone private repos)
-
-`git submodule add https://github.com/ajloza/meds_etl` _#you will need to compile the c++ FastBPE file in meds_etl/fastbpe_
-
-`git submodule add https://github.com/ajloza/EventExpressions`
+cd meds_etl/fastbpe
+g++ -std=c++11 -pthread -O3 fastBPE/main.cc -IfastBPE -o fast
+cd ../..
 
 
-## Then, you can add them as a local dependency:
+# 4. Sync the environment
+# This reads pyproject.toml and installs all dependencies (including submodules)
+`uv sync`
 
-`uv pip install -e ./EventExpressions`
+# 5. Activate the environment
 
-`uv pip install -e ./meds_etl` _#This doesn't work yet for meds_etl on the main branch, you can copy the pyproject.toml file from the kmacman-pyproject-toml branch if you want or just wait until it is merged_
+source .venv/bin/activate
+```
+> Note: You must have your git config user.email set up to access the private submodules.
 
+# Option B: Building from Scratch (No Clone)
+## Use this if you are starting a fresh project folder but need these tools.
 
-## Now, if you are in a notebook in the root directory, you can import these repos as libraries.
+## 1. Initialize Project
+```Bash
 
-`from meds_etl.tokenizer import Tokenizer`
+mkdir my_new_project
+cd my_new_project
+module add uv
+uv init
+```
+## 2. Add Standard Libraries
+```Bash
+uv add polars ipython jupyter regex numpy
+```
+## 3. Add Custom Libraries (Submodules)
+### We use git submodules so we can track specific versions of the libraries.
 
-`from EventExpressions import *`
+```Bash
 
-## Whenever there is an update to these repos, all you need to do is:
+# Add the repositories
+git submodule add https://github.com/ajloza/meds_etl
+git submodule add https://github.com/ajloza/EventExpressions
 
-`git submodule update --remote meds_etl #or EventExpressions`
+# Compile C++ backend for meds_etl
+cd meds_etl/fastbpe
+g++ -std=c++11 -pthread -O3 fastBPE/main.cc -IfastBPE -o fast
+cd ../..
 
-`uv sync #only needed if the dependencies of the libraries changed`
+# FIX: Temporary fix for meds_etl (Main branch missing config)
+# Copy the config from the fix branch so UV can see it
+wget https://raw.githubusercontent.com/ajloza/meds_etl/kmacman-pyproject-toml/pyproject.toml -O meds_etl/pyproject.toml
+```
+## 4. Link Libraries to UV
+### We use --editable so changes in the folder are immediately reflected in your code.
 
+```Bash
 
-### This way, you can still have your own repo for you to do version control of whatever you are working on in the root directory while having access to EventExpressions, meds_etl, etc, in a way that allows for easy updating whenever these libraries change.
+uv add --editable ./EventExpressions
+uv add --editable ./meds_etl
+```
+## How to Work & Update
+### Imports:
+
+```Python
+
+from meds_etl.tokenizer import Tokenizer
+from EventExpressions import *
+```
+### Updating the Libraries: If meds_etl or EventExpressions has a new update on GitHub:
+
+```Bash
+
+# 1. Pull the latest code for the library
+git submodule update --remote meds_etl
+
+# 2. Sync dependencies (only if the library added new requirements)
+uv sync
+```
