@@ -26,7 +26,7 @@
 `uv pip install -e ./meds_etl` _#This doesn't work yet for meds_etl on the main branch, you can copy the pyproject.toml file from the kmacman-pyproject-toml branch if you want or just wait until it is merged_
 
 
-## Now, if you are in a notebook in the root directory, you could load the tokenizer using
+## Now, if you are in a notebook in the root directory, you can import these repos as libraries.
 
 `from meds_etl.tokenizer import Tokenizer`
 
