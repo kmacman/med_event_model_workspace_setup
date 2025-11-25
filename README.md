@@ -12,7 +12,8 @@ module add uv
 # 3. Copy the compiled c++ tokenizer file into meds_etl/fastbpe
 
 # FIX: Temporary fix for meds_etl (Main branch missing config)
-# copy the following file into the meds_etl folder (this should be fixed as soon as a pr is merged): https://github.com/ajloza/meds_etl/blob/kmacman-pyproject-toml/pyproject.toml
+# copy the following file into the meds_etl folder (this should be fixed as soon as a pr is merged):
+wget https://raw.githubusercontent.com/kmacman/med_event_model_workspace_setup/refs/heads/main/FIX/pyproject.toml -O meds_etl/pyproject.toml
 
 # 4. Sync the environment - This reads pyproject.toml and installs all dependencies (including submodules)
 uv sync
@@ -49,7 +50,8 @@ git submodule add https://github.com/ajloza/EventExpressions
 # Copy the compiled C++ file into meds_etl/fastbpe
 
 # FIX: Temporary fix for meds_etl (Main branch missing config)
-# copy the following file into the meds_etl folder (this should be fixed as soon as a pr is merged): https://github.com/ajloza/meds_etl/blob/kmacman-pyproject-toml/pyproject.toml
+# copy the following file into the meds_etl folder (this should be fixed as soon as a pr is merged):
+wget https://raw.githubusercontent.com/kmacman/med_event_model_workspace_setup/refs/heads/main/FIX/pyproject.toml -O meds_etl/pyproject.toml
 ```
 ## 4. Link Libraries to UV
 ### We use --editable so changes in the folder are immediately reflected in your code.
