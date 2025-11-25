@@ -9,7 +9,7 @@ cd med_event_model_workspace_setup
 # 2. Load UV (Cluster specific)
 module add uv
 
-# 3. Copy the compiled c++ tokenizer file into meds_etl/fastbpe
+# 3. Copy the compiled c++ tokenizer file into meds_etl/fastbpe ## THIS IS COMPILED FOR THE CLUSTER, MAY NOT WORK ON YOUR MACHINE ##
 wget https://github.com/kmacman/med_event_model_workspace_setup/raw/refs/heads/main/FIX/fastFuncs_linux.so -O meds_etl/fastbpe/fastFuncs_linux.so
 
 # FIX: Temporary fix for meds_etl (Main branch missing config)
