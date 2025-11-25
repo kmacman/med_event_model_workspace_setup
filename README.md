@@ -14,7 +14,7 @@ To add our libraries from git, use git submodules:
 
 (You will need access from Andrew and will need to set your git config user.email in order to clone private repos)
 
-`git submodule add https://github.com/ajloza/meds_etl` _ #you will need to compile the c++ FastBPE file in meds_etl/fastbpe_
+`git submodule add https://github.com/ajloza/meds_etl` _#you will need to compile the c++ FastBPE file in meds_etl/fastbpe_
 
 `git submodule add https://github.com/ajloza/EventExpressions`
 
