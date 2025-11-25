@@ -14,7 +14,7 @@ To add our libraries from git, use git submodules:
 
 (You will need access from Andrew and will need to set your git config user.email in order to clone private repos)
 
-`git submodule add https://github.com/ajloza/meds_etl #you will need to compile the c++ FastBPE file in meds_etl/fastbpe` 
+`git submodule add https://github.com/ajloza/meds_etl` _ #you will need to compile the c++ FastBPE file in meds_etl/fastbpe_
 
 `git submodule add https://github.com/ajloza/EventExpressions`
 
@@ -23,7 +23,7 @@ Then, you can add them as a local dependency:
 
 `uv pip install -e ./EventExpressions`
 
-`uv pip install -e ./meds_etl #This doesn't work yet for meds_etl on the main branch, you can copy the pyproject.toml file from the kmacman-pyproject-toml branch if you want or just wait until it is merged` 
+`uv pip install -e ./meds_etl` _#This doesn't work yet for meds_etl on the main branch, you can copy the pyproject.toml file from the kmacman-pyproject-toml branch if you want or just wait until it is merged_
 
 
 Now, if you are in a notebook in the root directory, you could load the tokenizer using
