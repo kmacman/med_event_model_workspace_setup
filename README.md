@@ -4,6 +4,11 @@
 git clone --recurse-submodules https://github.com/kmacman/med_event_model_workspace_setup
 cd med_event_model_workspace_setup
 bash setup.sh
+
+#IF there have been any updates to meds_etl or EventExpressions, run the following to update the submodules
+bash update.sh
+
+#Activate the venv
 source .venv/bin/activate
 ```
 > Note: You must have your git config user.email set up to access the private submodules.
