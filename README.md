@@ -1,4 +1,5 @@
-# All you need to make a copy of this is type the following in the CLI
+# Run the following commands to clone this repo and set up the workspace with
+# the necessary libraries installed as dependencies using UV.
 ``` bash
 git clone https://github.com/kmacman/med_event_model_workspace_setup
 cd med_event_model_workspace_setup
