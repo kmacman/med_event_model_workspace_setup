@@ -10,6 +10,7 @@ cd med_event_model_workspace_setup
 module add uv
 
 # 3. Copy the compiled c++ tokenizer file into meds_etl/fastbpe
+wget https://github.com/kmacman/med_event_model_workspace_setup/raw/refs/heads/main/FIX/fastFuncs_linux.so -O meds_etl/fastbpe/fastFuncs_linux.so
 
 # FIX: Temporary fix for meds_etl (Main branch missing config)
 # copy the following file into the meds_etl folder (this should be fixed as soon as a pr is merged):
@@ -48,6 +49,7 @@ git submodule add https://github.com/ajloza/meds_etl
 git submodule add https://github.com/ajloza/EventExpressions
 
 # Copy the compiled C++ file into meds_etl/fastbpe
+wget https://github.com/kmacman/med_event_model_workspace_setup/raw/refs/heads/main/FIX/fastFuncs_linux.so -O meds_etl/fastbpe/fastFuncs_linux.so
 
 # FIX: Temporary fix for meds_etl (Main branch missing config)
 # copy the following file into the meds_etl folder (this should be fixed as soon as a pr is merged):
