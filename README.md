@@ -5,6 +5,8 @@ cd med_event_model_workspace_setup
 git submodule update --init --recursive
 module add uv
 uv sync
+uv pip install -e EventExpressions
+uv pip install -e meds_etl
 ```
 
 _You will need access to the private repos and will need config user.email set up appropriately.
