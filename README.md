@@ -12,12 +12,7 @@ cd med_event_model_workspace_setup
 # 2. Load UV (Cluster specific)
 `module add uv`
 
-# 3. Compile the tokenizer (REQUIRED)
-
-cd meds_etl/fastbpe
-g++ -std=c++11 -pthread -O3 fastBPE/main.cc -IfastBPE -o fast
-cd ../..
-
+# 3. Copy the compiled c++ tokenizer file into meds_etl/fastbpe
 
 # 4. Sync the environment
 # This reads pyproject.toml and installs all dependencies (including submodules)
