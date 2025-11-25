@@ -1,4 +1,15 @@
-# Make a new folder for your project/workspace and setup an env
+# All you need to make a copy of this is type the following in the CLI
+``` bash
+git clone https://github.com/kmacman/med_event_model_workspace_setup
+cd med_event_model_workspace_setup
+git submodule update --init --recursive
+module add uv
+uv sync
+```
+
+
+
+## Make a new folder for your project/workspace and setup an env
 
 `module add uv`
 
