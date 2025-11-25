@@ -58,10 +58,5 @@ from EventExpressions import *
 ### Updating the Libraries: If meds_etl or EventExpressions has a new update on GitHub:
 
 ```Bash
-
-# 1. Pull the latest code for the library
-git submodule update --remote meds_etl
-
-# 2. Sync dependencies (only if the library added new requirements)
-uv sync
+bash update.sh
 ```
