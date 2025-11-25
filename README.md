@@ -2,26 +2,24 @@
 ## Option A: Quick Start (Cloning this Repo)
 ## Use this if you want the standard setup immediately.
 
-```Bash
-
-# 1. Clone the repo and all submodules in one go
-
+### 1. Clone the repo and all submodules in one go
+```
 git clone --recurse-submodules https://github.com/kmacman/med_event_model_workspace_setup
 cd med_event_model_workspace_setup
-
-# 2. Load UV (Cluster specific)
+```
+### 2. Load UV (Cluster specific)
 `module add uv`
 
-# 3. Copy the compiled c++ tokenizer file into meds_etl/fastbpe
+### 3. Copy the compiled c++ tokenizer file into meds_etl/fastbpe
+#### _3.5 copy the following file into the meds_etl folder (this should be fixed as soon as a pr is merged): https://github.com/ajloza/meds_etl/blob/kmacman-pyproject-toml/pyproject.toml_
 
-# 4. Sync the environment
-# This reads pyproject.toml and installs all dependencies (including submodules)
+### 4. Sync the environment
+#### This reads pyproject.toml and installs all dependencies (including submodules)
 `uv sync`
 
-# 5. Activate the environment
+### 5. Activate the environment
+`source .venv/bin/activate`
 
-source .venv/bin/activate
-```
 > Note: You must have your git config user.email set up to access the private submodules.
 
 # Option B: Building from Scratch (No Clone)
